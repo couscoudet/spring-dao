@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+    <aop:config>
+          <!-- Aspect pour tracer l'execution des methodes "create" de toutes les DAO  -->
+		  <aop:aspect id="traceInvocationCreateAspect" ref="tracerInvocation">
+		    <aop:pointcut id="traceInvocationCreatePointcut" expression="execution(* eu.esic.formation.initspring.springdao.dao.impl.*DAOImpl.creer*(..))" />
+		    <aop:around pointcut-ref="traceInvocationCreatePointcut" method="afficherTrace" />
+		  </aop:aspect>
+		  <!-- Aspect pour tracer le debut d'invocation de toutes les methodes get des DAO -->
+		  <!-- TODO 8 et 9 : Créer ici votre Aspect devant etre appelé avant et après l'execution des get* de tous les DAOImpl -->
+	</aop:config>
+
+<bean id="tracerInvocation" class="eu.esic.formation.initispring.springdao.aspect.TraceInvocation" />
+
+	
+</beans>

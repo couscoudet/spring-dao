@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="hibernate.show_sql">true</property>
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!-- Specify session context 
+        <property name="hibernate.current_session_context_class">org.hibernate.context.internal.ThreadLocalSessionContext</property>
+        -->
+        <!-- mapping files -->
+        <mapping resource="hbm/Alerte.hbm.xml"/>
+        <mapping resource="hbm/Annonce.hbm.xml"/>
+        <mapping resource="hbm/Image.hbm.xml"/>
+        <mapping resource="hbm/Comment.hbm.xml"/>
+        <mapping resource="hbm/Utilisateur.hbm.xml"/>
+        <mapping resource="hbm/Message.hbm.xml"/>
+        
+    </session-factory>
+
+</hibernate-configuration>

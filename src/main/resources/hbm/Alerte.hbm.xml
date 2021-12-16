@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 avr. 2016 08:10:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="eu.esic.formation.initspring.springdao.entity.Alerte" table="Alerte">
+        <id name="idAlerte" type="java.lang.Integer">
+            <column name="id_alerte" />
+            <generator class="identity" />
+        </id>
+        <property name="villeDepart" type="string">
+            <column name="ville_depart" />
+        </property>
+        <property name="villeArrivee" type="string">
+            <column name="ville_arrivee" />
+        </property>
+        <property name="dateDepot" type="timestamp">
+            <column name="date_depot" length="19" not-null="true">
+                <comment>Date de depot de l'alerte</comment>
+            </column>
+        </property>
+        <!-- Mapping des entités associées -->
+        <many-to-one name="user" class="eu.esic.formation.initspring.springdao.entity.Utilisateur" fetch="select">
+            <column name="id_utilisateur" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
