@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 avr. 2016 08:10:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="eu.esic.formation.initspring.springdao.entity.Utilisateur" table="Utilisateur">
+        <id name="idUtilisateur" type="java.lang.Integer">
+            <column name="id_utilisateur" />
+            <generator class="identity" />
+        </id>
+        <property name="civilite" type="string">
+            <column name="civilite" length="2" not-null="true" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" />
+        </property>
+        <property name="login" type="string">
+            <column name="login" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" not-null="true" unique="true" />
+        </property>
+        <property name="enabled" type="boolean">
+            <column name="enabled" not-null="true" />
+        </property>
+        <property name="derniereConnexion" type="timestamp">
+            <column name="derniere_connexion" length="19" />
+        </property>
+        <property name="anneeDeNaissance" type="int">
+            <column name="annee_de_naissance" not-null="true" />
+        </property>
+        <property name="telephone" type="string">
+            <column name="telephone" length="30" />
+        </property>
+        <property name="dateInscription" type="timestamp">
+            <column name="date_inscription" length="19" not-null="true">
+                <comment>Date d'inscription au systeme</comment>
+            </column>
+        </property>
+        <!-- Mapping des entités associées -->
+        <set name="annonces" table="Annonce" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" />
+            </key>
+            <one-to-many class="eu.esic.formation.initspring.springdao.entity.Annonce" />
+        </set>
+        <set name="comments" table="Comment" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" />
+            </key>
+            <one-to-many class="eu.esic.formation.initspring.springdao.entity.Comment" />
+        </set>
+        <set name="messages" table="Message" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" />
+            </key>
+            <one-to-many class="eu.esic.formation.initspring.springdao.entity.Message" />
+        </set>
+        <set name="images" table="Image" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_utilisateur" />
+            </key>
+            <one-to-many class="eu.esic.formation.initspring.springdao.entity.Image" />
+        </set>
+    </class>
+</hibernate-mapping>

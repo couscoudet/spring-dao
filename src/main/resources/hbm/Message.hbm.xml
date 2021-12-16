@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 avr. 2016 08:10:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="eu.esic.formation.initspring.springdao.entity.Message" table="Message">
+        <id name="idMessage" type="java.lang.Integer">
+            <column name="id_message" />
+            <generator class="identity" />
+        </id>
+        <property name="corps" type="string">
+            <column name="corps" length="65535" />
+        </property>
+        <property name="dateCreation" type="timestamp">
+            <column name="date_creation" length="19" not-null="true" />
+        </property>
+        <!-- Mapping des entités associées -->
+        		<!-- Mapping avec Utilisateur -->
+        <many-to-one name="user" class="eu.esic.formation.initspring.springdao.entity.Utilisateur" fetch="select">
+            <column name="id_utilisateur" />
+        </many-to-one>
+        		<!-- Mapping avec Annonce -->
+        <many-to-one name="a" class="eu.esic.formation.initspring.springdao.entity.Annonce" fetch="select">
+            <column name="id_annonce" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 11 avr. 2016 08:10:48 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="eu.esic.formation.initspring.springdao.entity.Annonce" table="Annonce">
+        <id name="idAnnonce" type="java.lang.Integer">
+            <column name="id_annonce" />
+            <generator class="identity" />
+        </id>
+        <property name="natureColis" type="string">
+            <column name="nature_colis" />
+        </property>
+        <property name="poids" type="long">
+            <column name="poids" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="unitePoids" type="int">
+            <column name="unite_poids" not-null="true" />
+        </property>
+        <property name="dateDepot" type="timestamp">
+            <column name="date_depot" length="19" not-null="true" />
+        </property>
+        <property name="dateDepart" type="timestamp">
+            <column name="date_depart" length="19" not-null="true" />
+        </property>
+        <property name="dateArrivee" type="timestamp">
+            <column name="date_arrivee" length="19" not-null="true" />
+        </property>
+        <property name="villeDepart" type="string">
+            <column name="ville_depart" length="50" />
+        </property>
+        <property name="villeArrivee" type="string">
+            <column name="ville_arrivee" length="50" />
+        </property>
+        <property name="prime" type="long">
+            <column name="prime" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="devise" type="int">
+            <column name="devise" not-null="true" />
+        </property>
+        <property name="statut" type="string">
+            <column name="statut" length="10" />
+        </property>
+        <property name="typeAnnonce" type="int">
+            <column name="type_annonce" not-null="true" />
+        </property>
+        <property name="detail" type="string">
+            <column name="detail" length="250" />
+        </property>
+        <!-- Mapping des entités associées -->
+        <many-to-one name="user" class="eu.esic.formation.initspring.springdao.entity.Utilisateur" fetch="select">
+            <column name="id_utilisateur" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

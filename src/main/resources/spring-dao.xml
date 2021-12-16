@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+    <!-- Chargement du fichier de propriétes dans le contexte Spring -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath*:databaseColis.properties"/> 
+    </bean>
+    
+    <!-- Declaration de la datasource --> 
+	<bean id="dataSourceEsic" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	        <property name="driverClassName" value="${config.base.driver}" />
+	        <property name="url" value="${config.base.url}" />
+	        <property name="username" value="${config.base.username}"/> 
+	        <property name="password" value="${config.base.password}"/> 
+	</bean>
+
+
+ <!-- Declaration du JDBCTemplate -->
+	 <bean id="jdbcTemplateEsic" class="org.springframework.jdbc.core.JdbcTemplate">
+	    <property name="dataSource" ref="dataSourceEsic"/>
+	</bean>
+
+<!--  Déclaration Session Factory -->
+    <!-- Declaration de la SessionFactory avec gestion manuelle des transactions -->
+	<bean id="sessionFactoryBean" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	  <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+	  <property name="dataSource" ref="dataSourceEsic"></property>
+	</bean>
+	
+	<!-- Declaration de la SessionFactory avec gestion automatique des transactions -->
+	<bean id="sessionTxFactoryBean" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	  <property name="configLocation" value="classpath:hibernate-tx.cfg.xml" />
+	  <property name="dataSource" ref="dataSourceEsic"></property>
+	</bean>
+	
+	<!-- Declaration de la transaction attachée à la SessionFactory sessionTxFactoryBean-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionTxFactoryBean" />
+    </bean>
+	
+	
+<!--  Déclaration des Template -->
+	<bean id="hibernateTemplateBean" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactoryBean" />
+	</bean>
+
+	<!--  Déclaration des DAO Hibernate-->
+    		<!-- Declaration du DAO uilisant JDBCTemplate -->
+    <bean id="alerteDAOByJdbcTemplateBean" class="eu.esic.formation.initspring.springdao.dao.impl.AlerteJdbcTemplateDAOImpl">
+		<property name="jdbcTemplate" ref="jdbcTemplateEsic" />
+	</bean>
+	<!-- Declaration du DAO uilisant HibernateTemplate -->
+	<bean id="alerteDAOByHibernateTemplateBean" class="eu.esic.formation.initspring.springdao.dao.impl.AlerteHibernateTemplateDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplateBean" />
+	</bean>
+	
+	<!-- Declaration du DAO uilisant HibernateTransactionManager -->
+	<bean id="alerteDAOByHibernateTransactionManagerBean" class="eu.esic.formation.initspring.springdao.dao.impl.AlerteHibernateTransactionManagerDAOImpl">
+		<property name="sessionEsicFactory" ref="sessionTxFactoryBean" />
+	</bean>
+	<context:component-scan base-package="eu.esic.formation.initspring.springdao.dao"/> 
+</beans>

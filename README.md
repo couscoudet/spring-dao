@@ -1,3 +1,3 @@
-# Spring Dao
+# spring-dao
 
 spring-dao
