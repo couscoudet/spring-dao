@@ -2,8 +2,6 @@ package eu.esic.formation.initspring.springdao.test;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +16,7 @@ import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 @ContextConfiguration(locations = {"classpath*:spring-dao.xml"})
 public class AlerteHibernateTransactionManagerDAOTest {
 	
-	//TODO 7
+	//TODO 7 : Faites le necessaire pour injecter la dependance
 	private IAlerteDAO alerteDAO = null;
 	
 	public void setAlerteDAO(IAlerteDAO alerteDAO) { 
