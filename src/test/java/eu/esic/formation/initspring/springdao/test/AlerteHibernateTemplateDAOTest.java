@@ -20,7 +20,7 @@ public class AlerteHibernateTemplateDAOTest {
 	
 	//TODO 5 : Mettre le nom du bean adequat pour l'injection de dependance
 	@Autowired
-	@Qualifier("XXXXXXXX")
+	@Qualifier("alerteDAOByHibernateTemplateBean")
 	private IAlerteDAO alerteDAO = null;
 	
 	public void setAlerteDAO(IAlerteDAO alerteDAO) { 

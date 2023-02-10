@@ -29,7 +29,7 @@
  <!-- Declaration du JDBCTemplate -->
 	 <bean id="jdbcTemplateEsic" class="org.springframework.jdbc.core.JdbcTemplate">
 	  <!-- TODO 3 : Injecter correctement la datasource -->
-	    <property name="dataSource" ref="XXXXXXXX"/>
+	    <property name="dataSource" ref="dataSourceEsic"/>
 	</bean>
 
 <!--  Déclaration Session Factory -->
