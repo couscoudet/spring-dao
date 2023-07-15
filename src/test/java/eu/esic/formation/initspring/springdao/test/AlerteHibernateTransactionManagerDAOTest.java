@@ -13,7 +13,7 @@ import eu.esic.formation.initspring.springdao.entity.Alerte;
 import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring-dao.xml"})
+@ContextConfiguration(locations = {"classpath:spring-dao.xml"})
 public class AlerteHibernateTransactionManagerDAOTest {
 	
 	//TODO 7 : Faites le necessaire pour injecter la dependance

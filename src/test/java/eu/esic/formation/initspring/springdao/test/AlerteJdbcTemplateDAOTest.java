@@ -2,6 +2,8 @@ package eu.esic.formation.initspring.springdao.test;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +17,10 @@ import eu.esic.formation.initspring.springdao.entity.Alerte;
 import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath*:spring-dao.xml"})
+@ContextConfiguration(locations = {"classpath:spring-dao.xml"})
 public class AlerteJdbcTemplateDAOTest {
 	
-	@Autowired
-	@Qualifier("alerteDAOByJdbcTemplateBean")
+	@Resource(name="XXXXX")
 	private IAlerteDAO alerteDAO = null;
 	
 	@Test
