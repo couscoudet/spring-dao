@@ -31,7 +31,7 @@ public class AlerteJdbcTemplateDAOImpl implements IAlerteDAO{
 
 	public void updateAlerte(Alerte aP) {
 		String SQL = "update Alerte set ville_depart = ?, ville_arrivee=? where id_alerte = ?";
-		//TODO 1 : Completer la mise a  jour de la ville de depart et la ville d'arrivee en base
+		//TODO 1 : Completer la mise a jour de la ville de depart et la ville d'arrivee en base
 
 	}
 

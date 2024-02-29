@@ -7,8 +7,6 @@ import javax.annotation.Resource;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -20,7 +18,7 @@ import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 @ContextConfiguration(locations = {"classpath:spring-dao.xml"})
 public class AlerteJdbcTemplateDAOTest {
 	
-	@Resource(name="XXXXX")
+	@Resource(name="alerteDAOByJdbcTemplateBean")
 	private IAlerteDAO alerteDAO = null;
 	
 	@Test

@@ -15,7 +15,7 @@ import eu.esic.formation.initspring.springdao.entity.Alerte;
 import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-dao.xml"})
+@ContextConfiguration(locations = {"classpath*:spring-dao.xml"})
 public class AlerteHibernateTemplateDAOTest {
 	
 	//TODO 5 : Mettre le nom du bean adequat pour l'injection de dependance
