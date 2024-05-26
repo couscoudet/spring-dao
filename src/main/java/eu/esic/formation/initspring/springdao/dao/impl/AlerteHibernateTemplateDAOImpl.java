@@ -16,9 +16,9 @@ import eu.esic.formation.initspring.springdao.entity.Alerte;
  */
 @Repository
 public class AlerteHibernateTemplateDAOImpl implements IAlerteDAO{
-
-	private HibernateTemplate hibernateTemplate; 
 	//TODO 4 : Completer l'instruction necessaire pour faire injecter le bean hibernateTemplate
+	private HibernateTemplate hibernateTemplate; 
+	
 	
 	public Integer creerAlerte(Alerte aP) {
 		Session sessionEsicFactory = this.hibernateTemplate.getSessionFactory().getCurrentSession();

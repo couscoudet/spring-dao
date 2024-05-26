@@ -2,8 +2,6 @@ package eu.esic.formation.initspring.springdao.test;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +16,7 @@ import eu.esic.formation.initspring.springdao.entity.Utilisateur;
 @ContextConfiguration(locations = {"classpath:spring-dao.xml"})
 public class AlerteJdbcTemplateDAOTest {
 	
-	@Resource(name="alerteDAOByJdbcTemplateBean")
+	// TODO 3 : Déclarez l'instruction adéquate pour injecter le bon bean
 	private IAlerteDAO alerteDAO = null;
 	
 	@Test
@@ -42,7 +40,6 @@ public class AlerteJdbcTemplateDAOTest {
 	@Test
 	public void testGetAlerteById(){
 		Alerte a = this.alerteDAO.getAlerteById(70);
-		System.out.println(a);
 		Assert.assertNotNull(a);
 	}
 }
