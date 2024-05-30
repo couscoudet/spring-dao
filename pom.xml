@@ -23,6 +23,13 @@
       <version>${mysql-version}</version>
     </dependency>
     
+    <!-- Driver de connexion à la base Postgre SQL -->
+	<dependency>
+	    <groupId>org.postgresql</groupId>
+	    <artifactId>postgresql</artifactId>
+	    <version>42.7.2</version>
+	</dependency>
+    
     <!-- Librairie principale pour Hibernate -->
 	<dependency>
 		<groupId>org.hibernate</groupId>
